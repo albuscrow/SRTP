@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="list_background">#eeeeee</color>
+    <color name="transparent">#00000000</color>
+    <color name="header_title_color">#e7e7e7</color>
+    <color name="backgroudn_pressed">#b4c0c0</color>
+</resources>
