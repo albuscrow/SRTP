@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_background"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/search_keyword_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:inputType="text"
+                android:minWidth="100dp" >
+            </EditText>
+
+            <ImageView
+                android:id="@+id/dosearch_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/search_button"
+                android:contentDescription="@string/contentDescription"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/classify_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:divider="@color/list_background"
+            android:dividerHeight="20dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/brife_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/pull_refresh_item_list"
+        android:visibility="gone" />
+
+</RelativeLayout>
