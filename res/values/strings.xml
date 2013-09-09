@@ -7,8 +7,18 @@
     <string name="contentDescription">contentDescription</string>
     <string name="loading">加载中……</string>
     <string name="taobao_hot">淘宝热卖</string>
-    <string name="topic">专题活动</string>
+    <string name="topic">历史记录</string>
     <string name="search">搜索</string>
     <string name="personal">个人中心</string>
-
+    <string name="failed_prompt">获取漫画分类失败，请重试。</string>
+    <string name="reload">重新获取</string>
+    <string name="item_tiltle1">最近更新</string>
+    <string name="item_tiltle2">今日热门</string>
+    <string name="item_tiltle3">已完结</string>
+    <string name="title_activity_book_list">BookListActivity</string>
+    <string name="title_activity_books">BooksActivity</string>
+	<string name="deleteButton">删除记录</string>
+	<string name="recommend">精彩推荐</string>
+	<string name="latestUpdate">最近更新</string>
+	<string name="popular">热门连载</string>
 </resources>

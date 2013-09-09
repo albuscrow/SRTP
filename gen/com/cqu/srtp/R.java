@@ -176,132 +176,174 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int indicator_right_padding=0x7f060000;
     }
     public static final class drawable {
-        public static final int arrow_right=0x7f020000;
-        public static final int back_botton=0x7f020001;
-        public static final int back_botton_normal=0x7f020002;
-        public static final int back_botton_pressed=0x7f020003;
-        public static final int background=0x7f020004;
-        public static final int bottom_banner=0x7f020005;
-        public static final int bottom_banner_end=0x7f020006;
-        public static final int check_updata=0x7f020007;
-        public static final int clear=0x7f020008;
-        public static final int connect=0x7f020009;
-        public static final int default_ptr_flip=0x7f02000a;
-        public static final int default_ptr_rotate=0x7f02000b;
-        public static final int edit_text_background=0x7f02000c;
-        public static final int favourite_mine=0x7f02000d;
-        public static final int ic_launcher=0x7f02000e;
-        public static final int indicator_arrow=0x7f02000f;
-        public static final int indicator_bg_bottom=0x7f020010;
-        public static final int indicator_bg_top=0x7f020011;
-        public static final int long_slide=0x7f020012;
-        public static final int my_taobao=0x7f020013;
-        public static final int order=0x7f020014;
-        public static final int search_button=0x7f020015;
-        public static final int search_button_pressed=0x7f020016;
-        public static final int search_search_normal=0x7f020017;
-        public static final int shop_car=0x7f020018;
-        public static final int short_slide=0x7f020019;
-        public static final int tab_home=0x7f02001a;
-        public static final int tab_home_normal=0x7f02001b;
-        public static final int tab_home_selected=0x7f02001c;
-        public static final int tab_search=0x7f02001d;
-        public static final int tab_search_normal=0x7f02001e;
-        public static final int tab_search_selected=0x7f02001f;
-        public static final int tab_topic=0x7f020020;
-        public static final int tab_topic_normal=0x7f020021;
-        public static final int tab_topic_selected=0x7f020022;
-        public static final int tab_user=0x7f020023;
-        public static final int tab_user_normal=0x7f020024;
-        public static final int tab_user_selected=0x7f020025;
-        public static final int top_banner=0x7f020026;
-        public static final int vernier=0x7f020027;
-        public static final int welcome_image=0x7f020028;
+        public static final int a=0x7f020000;
+        public static final int arrow_right=0x7f020001;
+        public static final int back_botton=0x7f020002;
+        public static final int back_botton_normal=0x7f020003;
+        public static final int back_botton_pressed=0x7f020004;
+        public static final int background=0x7f020005;
+        public static final int bottom_banner=0x7f020006;
+        public static final int bottom_banner_end=0x7f020007;
+        public static final int check_updata=0x7f020008;
+        public static final int clear=0x7f020009;
+        public static final int connect=0x7f02000a;
+        public static final int default_ptr_flip=0x7f02000b;
+        public static final int default_ptr_rotate=0x7f02000c;
+        public static final int edit_text_background=0x7f02000d;
+        public static final int favourite_mine=0x7f02000e;
+        public static final int ic_launcher=0x7f02000f;
+        public static final int image_shape=0x7f020010;
+        public static final int indicator_arrow=0x7f020011;
+        public static final int indicator_bg_bottom=0x7f020012;
+        public static final int indicator_bg_top=0x7f020013;
+        public static final int long_slide=0x7f020014;
+        public static final int my_taobao=0x7f020015;
+        public static final int order=0x7f020016;
+        public static final int search_button=0x7f020017;
+        public static final int search_button_pressed=0x7f020018;
+        public static final int search_search_normal=0x7f020019;
+        public static final int shop_car=0x7f02001a;
+        public static final int short_slide=0x7f02001b;
+        public static final int tab_home=0x7f02001c;
+        public static final int tab_home_normal=0x7f02001d;
+        public static final int tab_home_selected=0x7f02001e;
+        public static final int tab_search=0x7f02001f;
+        public static final int tab_search_normal=0x7f020020;
+        public static final int tab_search_selected=0x7f020021;
+        public static final int tab_topic=0x7f020022;
+        public static final int tab_topic_normal=0x7f020023;
+        public static final int tab_topic_selected=0x7f020024;
+        public static final int tab_user=0x7f020025;
+        public static final int tab_user_normal=0x7f020026;
+        public static final int tab_user_selected=0x7f020027;
+        public static final int top_banner=0x7f020028;
+        public static final int vernier=0x7f020029;
+        public static final int welcome_image=0x7f02002a;
     }
     public static final class id {
-        public static final int action_settings=0x7f05003b;
-        public static final int back_image_button=0x7f05000d;
-        public static final int base_bar=0x7f050015;
+        public static final int action_settings=0x7f050054;
+        public static final int back_image_button=0x7f05000e;
+        public static final int base_bar=0x7f050019;
+        public static final int book_author=0x7f050022;
+        public static final int book_name=0x7f050021;
+        public static final int book_name_recommend=0x7f05004a;
+        public static final int book_update_infor=0x7f050024;
+        public static final int book_update_recommend=0x7f05004b;
+        public static final int book_view=0x7f050020;
+        public static final int book_view_recommend=0x7f050049;
+        public static final int books_list=0x7f05000c;
         public static final int both=0x7f050003;
-        public static final int brife_item_list=0x7f050037;
-        public static final int classify_list=0x7f050036;
-        public static final int clear_cach=0x7f050028;
-        public static final int clear_cach_image=0x7f050029;
-        public static final int cloudstoreprogressbar=0x7f05001d;
-        public static final int colloction=0x7f050022;
-        public static final int colloction_image=0x7f050023;
-        public static final int connect_us=0x7f05002a;
-        public static final int connect_us_image=0x7f05002b;
+        public static final int brife_item_list=0x7f050051;
+        public static final int classify_list=0x7f05004f;
+        public static final int clear_cach=0x7f05003a;
+        public static final int clear_cach_image=0x7f05003b;
+        public static final int cloudstoreprogressbar=0x7f05002f;
+        public static final int colloction=0x7f050034;
+        public static final int colloction_image=0x7f050035;
+        public static final int connect_us=0x7f05003c;
+        public static final int connect_us_image=0x7f05003d;
+        public static final int deleteButton=0x7f05002d;
         public static final int disabled=0x7f050000;
-        public static final int dosearch_button=0x7f050035;
-        public static final int fl_inner=0x7f05002e;
+        public static final int dosearch_button=0x7f05004e;
+        public static final int failed_prompt=0x7f05002b;
+        public static final int fl_inner=0x7f050040;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
-        public static final int header=0x7f05000c;
-        public static final int header_title_text_view=0x7f05000e;
-        public static final int item_display_layout=0x7f050013;
-        public static final int item_display_view_page=0x7f050016;
-        public static final int loading=0x7f05001a;
+        public static final int header=0x7f05000d;
+        public static final int header_title_text_view=0x7f05000f;
+        public static final int history=0x7f050053;
+        public static final int item_display_layout=0x7f050014;
+        public static final int item_display_view_page=0x7f05001a;
+        public static final int item_tiltle1=0x7f050026;
+        public static final int item_tiltle2=0x7f050028;
+        public static final int item_tiltle3=0x7f05002a;
+        public static final int item_view1=0x7f050025;
+        public static final int item_view2=0x7f050027;
+        public static final int item_view3=0x7f050029;
+        public static final int latestUpdate=0x7f050017;
+        public static final int left_recomend=0x7f050047;
+        public static final int loading=0x7f05001e;
         public static final int manualOnly=0x7f050004;
-        public static final int mine=0x7f050019;
-        public static final int mine_choose=0x7f05001f;
-        public static final int my_favourite=0x7f050020;
-        public static final int my_favourite_image=0x7f050021;
-        public static final int my_order=0x7f050026;
-        public static final int my_order_image=0x7f050027;
-        public static final int my_tabhost=0x7f050011;
+        public static final int mine=0x7f05001d;
+        public static final int mine_choose=0x7f050031;
+        public static final int msg=0x7f050045;
+        public static final int my_favourite=0x7f050032;
+        public static final int my_favourite_image=0x7f050033;
+        public static final int my_order=0x7f050038;
+        public static final int my_order_image=0x7f050039;
+        public static final int my_tabhost=0x7f050012;
+        public static final int popular=0x7f050016;
         public static final int pullDownFromTop=0x7f050005;
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_to_refresh_image=0x7f05002f;
-        public static final int pull_to_refresh_progress=0x7f050030;
-        public static final int pull_to_refresh_sub_text=0x7f050032;
-        public static final int pull_to_refresh_text=0x7f050031;
+        public static final int pull_to_refresh_image=0x7f050041;
+        public static final int pull_to_refresh_progress=0x7f050042;
+        public static final int pull_to_refresh_sub_text=0x7f050044;
+        public static final int pull_to_refresh_text=0x7f050043;
+        public static final int ratingBar1=0x7f050023;
+        public static final int recommend=0x7f050015;
+        public static final int reload=0x7f05002c;
+        public static final int right_recomend=0x7f050048;
         public static final int rotate=0x7f050007;
         public static final int scrollview=0x7f05000b;
-        public static final int search_keyword_edit_text=0x7f050034;
-        public static final int search_layout=0x7f050033;
-        public static final int search_view=0x7f050018;
-        public static final int shop_car=0x7f050024;
-        public static final int shop_car_image=0x7f050025;
-        public static final int slide_bar=0x7f050014;
-        public static final int tab_host_layout=0x7f050012;
-        public static final int tab_label=0x7f050038;
-        public static final int topic_item_list=0x7f05003a;
-        public static final int topic_list=0x7f050039;
-        public static final int topic_view=0x7f050017;
-        public static final int tv_loadingMSG=0x7f05001e;
-        public static final int update=0x7f05002c;
-        public static final int update_image=0x7f05002d;
-        public static final int vernier_image_view=0x7f050010;
-        public static final int vernier_image_view_layout=0x7f05000f;
-        public static final int view_loading=0x7f05001c;
+        public static final int search_keyword_edit_text=0x7f05004d;
+        public static final int search_layout=0x7f05004c;
+        public static final int search_loading=0x7f050050;
+        public static final int search_view=0x7f05001c;
+        public static final int shop_car=0x7f050036;
+        public static final int shop_car_image=0x7f050037;
+        public static final int slide_bar=0x7f050018;
+        public static final int tab_host_layout=0x7f050013;
+        public static final int tab_label=0x7f050052;
+        public static final int title_image=0x7f050046;
+        public static final int topic_view=0x7f05001b;
+        public static final int tv_loadingMSG=0x7f050030;
+        public static final int update=0x7f05003e;
+        public static final int update_image=0x7f05003f;
+        public static final int vernier_image_view=0x7f050011;
+        public static final int vernier_image_view_layout=0x7f050010;
+        public static final int view_loading=0x7f05002e;
         public static final int webview=0x7f05000a;
-        public static final int welcome_image=0x7f05001b;
+        public static final int welcome_image=0x7f05001f;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int include_loading=0x7f030001;
-        public static final int mine=0x7f030002;
-        public static final int pull_refresh_item_list=0x7f030003;
-        public static final int pull_to_refresh_header_horizontal=0x7f030004;
-        public static final int pull_to_refresh_header_vertical=0x7f030005;
-        public static final int search_button=0x7f030006;
-        public static final int search_view=0x7f030007;
-        public static final int tag_indicator=0x7f030008;
-        public static final int topic_view_tab=0x7f030009;
+        public static final int activity_books=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int book_item_list=0x7f030002;
+        public static final int catgory_item_list=0x7f030003;
+        public static final int download_failed=0x7f030004;
+        public static final int history_item_list=0x7f030005;
+        public static final int include_loading=0x7f030006;
+        public static final int mine=0x7f030007;
+        public static final int pull_refresh_item_list=0x7f030008;
+        public static final int pull_to_refresh_header_horizontal=0x7f030009;
+        public static final int pull_to_refresh_header_vertical=0x7f03000a;
+        public static final int recommend=0x7f03000b;
+        public static final int recommend_item_list=0x7f03000c;
+        public static final int search_button=0x7f03000d;
+        public static final int search_view=0x7f03000e;
+        public static final int tag_indicator=0x7f03000f;
+        public static final int topic_view_tab=0x7f030010;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int books=0x7f0a0000;
+        public static final int main=0x7f0a0001;
     }
     public static final class string {
         public static final int action_settings=0x7f070007;
         public static final int app_name=0x7f070006;
         public static final int contentDescription=0x7f070009;
+        public static final int deleteButton=0x7f070016;
+        public static final int failed_prompt=0x7f07000f;
         public static final int hello_world=0x7f070008;
+        public static final int item_tiltle1=0x7f070011;
+        public static final int item_tiltle2=0x7f070012;
+        public static final int item_tiltle3=0x7f070013;
+        public static final int latestUpdate=0x7f070018;
         public static final int loading=0x7f07000a;
         public static final int personal=0x7f07000e;
+        public static final int popular=0x7f070019;
         /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
          */
@@ -311,8 +353,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pull_to_refresh_pull_label=0x7f070000;
         public static final int pull_to_refresh_refreshing_label=0x7f070002;
         public static final int pull_to_refresh_release_label=0x7f070001;
+        public static final int recommend=0x7f070017;
+        public static final int reload=0x7f070010;
         public static final int search=0x7f07000d;
         public static final int taobao_hot=0x7f07000b;
+        public static final int title_activity_book_list=0x7f070014;
+        public static final int title_activity_books=0x7f070015;
         public static final int topic=0x7f07000c;
     }
     public static final class style {
@@ -410,7 +456,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrAdapterViewBackground
+          @attr name android:ptrAdapterViewBackground
         */
         public static final int PullToRefresh_ptrAdapterViewBackground = 16;
         /**
@@ -429,7 +475,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>flip</code></td><td>0x1</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrAnimationStyle
+          @attr name android:ptrAnimationStyle
         */
         public static final int PullToRefresh_ptrAnimationStyle = 12;
         /**
@@ -441,7 +487,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrDrawable
+          @attr name android:ptrDrawable
         */
         public static final int PullToRefresh_ptrDrawable = 6;
         /**
@@ -451,7 +497,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.cqu.srtp:ptrDrawableBottom
+          @attr name android:ptrDrawableBottom
         */
         public static final int PullToRefresh_ptrDrawableBottom = 18;
         /**
@@ -463,7 +509,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrDrawableEnd
+          @attr name android:ptrDrawableEnd
         */
         public static final int PullToRefresh_ptrDrawableEnd = 8;
         /**
@@ -475,7 +521,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrDrawableStart
+          @attr name android:ptrDrawableStart
         */
         public static final int PullToRefresh_ptrDrawableStart = 7;
         /**
@@ -485,7 +531,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.cqu.srtp:ptrDrawableTop
+          @attr name android:ptrDrawableTop
         */
         public static final int PullToRefresh_ptrDrawableTop = 17;
         /**
@@ -499,7 +545,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrHeaderBackground
+          @attr name android:ptrHeaderBackground
         */
         public static final int PullToRefresh_ptrHeaderBackground = 1;
         /**
@@ -513,7 +559,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrHeaderSubTextColor
+          @attr name android:ptrHeaderSubTextColor
         */
         public static final int PullToRefresh_ptrHeaderSubTextColor = 3;
         /**
@@ -525,7 +571,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrHeaderTextAppearance
+          @attr name android:ptrHeaderTextAppearance
         */
         public static final int PullToRefresh_ptrHeaderTextAppearance = 10;
         /**
@@ -539,7 +585,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrHeaderTextColor
+          @attr name android:ptrHeaderTextColor
         */
         public static final int PullToRefresh_ptrHeaderTextColor = 2;
         /**
@@ -556,7 +602,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrListViewExtrasEnabled
+          @attr name android:ptrListViewExtrasEnabled
         */
         public static final int PullToRefresh_ptrListViewExtrasEnabled = 14;
         /**
@@ -580,7 +626,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>pullUpFromBottom</code></td><td>0x2</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrMode
+          @attr name android:ptrMode
         */
         public static final int PullToRefresh_ptrMode = 4;
         /**
@@ -593,7 +639,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrOverScroll
+          @attr name android:ptrOverScroll
         */
         public static final int PullToRefresh_ptrOverScroll = 9;
         /**
@@ -607,7 +653,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrRefreshableViewBackground
+          @attr name android:ptrRefreshableViewBackground
         */
         public static final int PullToRefresh_ptrRefreshableViewBackground = 0;
         /**
@@ -623,7 +669,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrRotateDrawableWhilePulling
+          @attr name android:ptrRotateDrawableWhilePulling
         */
         public static final int PullToRefresh_ptrRotateDrawableWhilePulling = 15;
         /**
@@ -636,7 +682,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrScrollingWhileRefreshingEnabled
+          @attr name android:ptrScrollingWhileRefreshingEnabled
         */
         public static final int PullToRefresh_ptrScrollingWhileRefreshingEnabled = 13;
         /**
@@ -649,7 +695,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrShowIndicator
+          @attr name android:ptrShowIndicator
         */
         public static final int PullToRefresh_ptrShowIndicator = 5;
         /**
@@ -661,7 +707,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name com.cqu.srtp:ptrSubHeaderTextAppearance
+          @attr name android:ptrSubHeaderTextAppearance
         */
         public static final int PullToRefresh_ptrSubHeaderTextAppearance = 11;
     };

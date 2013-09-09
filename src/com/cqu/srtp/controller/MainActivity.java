@@ -1,14 +1,23 @@
 package com.cqu.srtp.controller;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.cqu.srtp.R;
+import com.cqu.srtp.activity.BooksActivity;
+import com.cqu.srtp.adapter.MyPagerAdapter;
 import com.cqu.srtp.common.AppConfig;
+import com.cqu.srtp.common.MainService;
 import com.cqu.srtp.listener.MineOnClickListener;
 import com.cqu.srtp.listener.MyOnTabChangeListener;
+import com.cqu.srtp.listener.MyTextViewOnClickListener;
 import com.cqu.srtp.util.TitleManeger;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,11 +27,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,22 +39,26 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity{
 
+	private static String TAG="MainActivity";
 	public static final String[] TAB_TAGS = {"item","topic","search","mytaobao"};
 	private static final int[] TAB_INDICATOR_DRAWABLE_IDS = {R.layout.tag_indicator,R.layout.tag_indicator,R.layout.tag_indicator,R.layout.tag_indicator};
 	private static final int[] TAB_CONTENT_VIEW_IDS = {R.id.item_display_layout,R.id.topic_view,R.id.search_view,R.id.mine};
-
+    
 	private LayoutInflater layoutInflater;
 	private WebView taobaoWebView;
 	private ViewPager pageViews;
 	private TabHost tabHost;
 
-
 	private View searchLayout;
 
+	public ListView classifyListView; //onTabChangeListener 使用
+	
+	
 	private PullToRefreshListView topicListView;
 	private ListView myFavouriteView;
 	private LinearLayout mineView;
@@ -54,7 +67,10 @@ public class MainActivity extends Activity{
 	private ImageView vernier;
 	private ImageButton backImageBotton;
 	private View welcomeImageView;
-
+	public View loading;//onTabChangeListener 使用
+	public View searchLoading;//onTabChangeListener 使用
+	public ListView historyListView;//历史记录
+	
 	private Integer[] state = new Integer[4];
 	private int position = 0;
 	private boolean shutDownFlag;
@@ -75,6 +91,8 @@ public class MainActivity extends Activity{
 		AppConfig.initConfig(this);
 		AppConfig.isWifiConnect();
 		initUI();
+		Intent intent=new Intent(MainActivity.this,MainService.class);
+		startService(intent);
 		new Handler().postDelayed(new Runnable() {
 
 			public void run() {
@@ -83,6 +101,7 @@ public class MainActivity extends Activity{
 				welcomeImageView.setVisibility(View.GONE);
 			}
 		}, 2000);
+		tabHost.setOnTabChangedListener(new MyOnTabChangeListener(this));//在classifyListView初始化之后设置
 	}
 
 	private void initUI(){
@@ -94,7 +113,8 @@ public class MainActivity extends Activity{
 			Toast.makeText(this, "网络不给力哦，尝试连接WiFi吧", Toast.LENGTH_SHORT).show();
 		}
 		initTagHost();
-		initVernier();
+//		initVernier();
+		loading=findViewById(R.id.loading);
 		backImageBotton = (ImageButton)findViewById(R.id.back_image_button);
 		backImageBotton.setOnClickListener(new OnClickListener() {
 
@@ -130,29 +150,29 @@ public class MainActivity extends Activity{
 		});
 	}
 
-	@SuppressLint("NewApi")
-	private void initVernier() {
-		final View view = tabHost.getTabWidget().getChildTabViewAt(0).findViewById(R.id.tab_label);
-		view.post(new Runnable() {
-			@Override
-			public void run() {
-				float x = view.getX()+(view.getWidth()-vernier.getWidth())/2;
-				vernier.setX(x);
-				vernier.setTag(x);
-			}
-		});
-	}
+	
+//	private void initVernier() {
+//		final View view = tabHost.getTabWidget().getChildTabViewAt(0).findViewById(R.id.tab_label);
+//		view.post(new Runnable() {
+//			@Override
+//			public void run() {
+//				float x = view.getX()+(view.getWidth()-vernier.getWidth())/2;
+//				vernier.setX(x);
+//				vernier.setTag(x);
+//			}
+//		});
+//	}
 
-	@SuppressLint("NewApi")
-	public void moveNervier(int index){
-		final float newX = getNewX(index);
-		float x = (Float) vernier.getTag();
-		vernier.setTag(newX);
-		TranslateAnimation animation = new TranslateAnimation(x, newX, 0,0 );
-		animation.setDuration(100);
-		animation.setFillAfter(true);
-		vernier.startAnimation(animation);
-	}
+//	@SuppressLint("NewApi")
+//	public void moveNervier(int index){
+//		final float newX = getNewX(index);
+//		float x = (Float) vernier.getTag();
+//		vernier.setTag(newX);
+//		TranslateAnimation animation = new TranslateAnimation(x, newX, 0,0 );
+//		animation.setDuration(100);
+//		animation.setFillAfter(true);
+//		vernier.startAnimation(animation);
+//	}
 
 	@SuppressLint("NewApi")
 	private float getNewX(int index) {
@@ -163,7 +183,6 @@ public class MainActivity extends Activity{
 	private void initTagHost() {
 		tabHost = (TabHost) findViewById(R.id.my_tabhost);
 		tabHost.setup();
-		tabHost.setOnTabChangedListener(new MyOnTabChangeListener(this));
 		initItemDisplayViewPager();
 		initTopicDisplayList();
 		initSearchView();
@@ -178,12 +197,29 @@ public class MainActivity extends Activity{
 		tabHost.addTab(tabSpec);
 		searchLayout = findViewById(R.id.search_layout);
 		searchItemListView = (PullToRefreshListView)findViewById(R.id.brife_item_list);
-		ListView classifyListView = (ListView) findViewById(R.id.classify_list);
+		classifyListView = (ListView) findViewById(R.id.classify_list);
 //		ClassifyListAdapter classifyListAdapter = new ClassifyListAdapter(this);
 //		classifyListAdapter.initData();
 //		classifyListView.setAdapter(classifyListAdapter);
 //		classifyListView.requestFocus();
-//		findViewById(R.id.dosearch_button).setOnClickListener(new SearchOnClickListener(this,SearchOnClickListener.DYNAMIC));
+		searchLoading=findViewById(R.id.search_loading);
+		ImageView doSearch=(ImageView) findViewById(R.id.dosearch_button);
+		final EditText editText=(EditText) findViewById(R.id.search_keyword_edit_text);
+		doSearch.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(MainActivity.this,BooksActivity.class);
+				String keyword=editText.getText().toString();
+				if(null==keyword || keyword.length()<1){
+					Toast.makeText(getApplicationContext(), "请输入关键字！", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				intent.putExtra(BooksActivity.INTENT_NAME, keyword);
+				startActivity(intent);
+			}
+		});
+//		.setOnClickListener(new SearchOnClickListener(this,SearchOnClickListener.DYNAMIC));
 	}
 
 	private void initTaobaoWebView() {
@@ -211,8 +247,10 @@ public class MainActivity extends Activity{
 		tagIndicator.setImageResource(R.drawable.tab_topic);
 		tabSpec.setIndicator(tagIndicator).setContent(TAB_CONTENT_VIEW_IDS[1]);
 		tabHost.addTab(tabSpec);
-		topicListView = (PullToRefreshListView) findViewById(R.id.topic_list);
-		topicItemListView = (PullToRefreshListView) findViewById(R.id.topic_item_list);
+		historyListView=(ListView) findViewById(R.id.history);
+//		historyListView.setOnItemClickListener(new MyOnItemListener(this));
+//		topicListView = (PullToRefreshListView) findViewById(R.id.topic_list);
+//		topicItemListView = (PullToRefreshListView) findViewById(R.id.topic_item_list);
 	}
 
 	private void initItemDisplayViewPager() {
@@ -223,6 +261,21 @@ public class MainActivity extends Activity{
 		.setContent(TAB_CONTENT_VIEW_IDS[0]);
 		tabHost.addTab(tabSpec);
 		pageViews = (ViewPager) findViewById(R.id.item_display_view_page);
+		TextView recommendTV=(TextView) findViewById(R.id.recommend);
+		TextView popularTV=(TextView) findViewById(R.id.popular);
+		TextView latestUpdateTv=(TextView) findViewById(R.id.latestUpdate);
+		View recommend=this.getLayoutInflater().inflate(R.layout.recommend, null);
+		View popular=this.getLayoutInflater().inflate(R.layout.recommend, null);
+		View latestUpdate=this.getLayoutInflater().inflate(R.layout.activity_books, null);
+		List<View> views=new ArrayList<View>();
+		views.add(recommend);
+		views.add(popular);
+		views.add(latestUpdate);
+		MyPagerAdapter pagerAdapter=new MyPagerAdapter(views);
+		pageViews.setAdapter(pagerAdapter);
+		recommendTV.setOnClickListener(new MyTextViewOnClickListener(0, pageViews));
+		popularTV.setOnClickListener(new MyTextViewOnClickListener(1, pageViews));
+		latestUpdateTv.setOnClickListener(new MyTextViewOnClickListener(2, pageViews));
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -254,6 +307,7 @@ public class MainActivity extends Activity{
 				}
 			}else {
 				if (shutDownFlag) {
+					MainService.quit(this);
 					super.onKeyDown(keyCode, event);
 				}
 				Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
@@ -295,8 +349,8 @@ public class MainActivity extends Activity{
 		TitleManeger.setTitleMine("我的喜欢");
 		Animation animation = AnimationUtils.loadAnimation(this,R.anim.view_switch_in);
 		mineView.setVisibility(View.GONE);
-		myFavouriteView.setVisibility(View.VISIBLE);
-		myFavouriteView.startAnimation(animation);
+		//myFavouriteView.setVisibility(View.VISIBLE);
+		//myFavouriteView.startAnimation(animation);
 	}
 
 	public void goMyTaobao(String Url,String title) {
@@ -353,7 +407,8 @@ public class MainActivity extends Activity{
 	public void setPosition(int temp) {
 		position = temp;
 	}
-
+	
+	
 	@Override
 	protected void onStart() {
 		super.onStart();
