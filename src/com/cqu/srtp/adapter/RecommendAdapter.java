@@ -2,6 +2,7 @@ package com.cqu.srtp.adapter;
 
 import java.util.List;
 
+
 import com.cqu.srtp.R;
 import com.cqu.srtp.entity.BookItem;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -29,6 +30,10 @@ public class RecommendAdapter extends BaseAdapter {
 		ImageLoaderConfiguration Ilc=ImageLoaderConfiguration.createDefault(activity);
 		imLoader=ImageLoader.getInstance();
 		imLoader.init(Ilc);
+	}
+	public RecommendAdapter(List<BookItem> books) {
+		super();
+		this.books = books;
 	}
 
 	@Override
@@ -76,5 +81,4 @@ public class RecommendAdapter extends BaseAdapter {
 		}
 		return v;
 	}
-
 }
