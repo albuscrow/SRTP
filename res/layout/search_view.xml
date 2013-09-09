@@ -46,12 +46,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:divider="@color/list_background"
-            android:dividerHeight="20dp"
+            android:dividerHeight="2dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:scrollbars="none" />
+            android:scrollbars="none" 
+            android:background="@android:color/white"
+            android:cacheColorHint="#00000000"
+            />
     </LinearLayout>
-
+	<include
+        android:id="@+id/search_loading"
+        android:layout_marginBottom="100dp"
+        layout="@layout/include_loading"
+        android:visibility="gone" />
     <include
         android:id="@+id/brife_item_list"
         android:layout_width="match_parent"
