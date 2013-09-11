@@ -20,8 +20,8 @@
             android:contentDescription="@string/contentDescription"
             android:padding="5dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/back_botton" 
-            android:visibility="gone"/>
+            android:src="@drawable/back_botton"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/header_title_text_view"
@@ -78,65 +78,77 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
-					<LinearLayout 
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:orientation="horizontal"
-					    >
-					    <TextView 
-					        android:id="@+id/recommend"
-					        android:layout_width="120dp"
-					        android:layout_height="30dp"
-					        android:text="@string/recommend"
-					        />
-					    <TextView 
-					        android:id="@+id/popular"
-					        android:layout_width="120dp"
-					        android:layout_height="30dp"
-					        android:text="@string/popular"
-					        />
-					    <TextView 
-					        android:id="@+id/latestUpdate"
-					        android:layout_width="120dp"
-					        android:layout_height="30dp"
-					        android:text="@string/latestUpdate"
-					        />
-					</LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/recommend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/recommend"
+                            android:textColor="@android:color/black"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/popular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/popular"
+                            android:textColor="@android:color/black"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:id="@+id/latestUpdate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/latestUpdate"
+                            android:textColor="@android:color/black"
+                            android:layout_weight="1"
+                            android:textSize="15sp" 
+                            android:gravity="center"/>
+                    </LinearLayout>
+
                     <ImageView
                         android:id="@+id/slide_bar"
                         android:layout_width="100dp"
                         android:layout_height="3dp"
-                        android:scaleType="fitXY"
                         android:contentDescription="@string/contentDescription"
+                        android:scaleType="fitXY"
                         android:src="@drawable/short_slide" />
 
                     <ImageView
                         android:id="@+id/base_bar"
                         android:layout_width="match_parent"
                         android:layout_height="3dp"
-                        android:scaleType="fitXY"
                         android:contentDescription="@string/contentDescription"
+                        android:scaleType="fitXY"
                         android:src="@drawable/long_slide" />
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/item_display_view_page"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" >
-                        
                     </android.support.v4.view.ViewPager>
                 </LinearLayout>
 
                 <include
-                    android:id="@+id/topic_view"
-                    layout="@layout/topic_view_tab" />
- 
+                    android:id="@+id/history_view"
+                    layout="@layout/history_view_tab" />
+
                 <include
                     android:id="@+id/search_view"
                     layout="@layout/search_view" />
 
                 <include
                     android:id="@+id/mine"
-                    layout="@layout/mine" /> 
+                    layout="@layout/mine" />
             </FrameLayout>
 
             <TabWidget

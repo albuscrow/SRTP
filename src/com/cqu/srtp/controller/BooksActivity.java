@@ -1,4 +1,4 @@
-package com.cqu.srtp.activity;
+package com.cqu.srtp.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class BooksActivity extends Activity {
 					item.setLeve(i%11);
 					item.setPicUrl("http://e.hiphotos.baidu.com/album/" +
 							"w%3D2048/sign=97726d272fdda3cc0be4bf2035d13801/5d6034a85edf8db1175788dc0823dd54564e7409.jpg");
-					item.setUpdateInfor("¸üÐÂÖÁ"+i);
+					item.setUpdateInfor("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+i);
 					items.add(item);
 				}
 			}

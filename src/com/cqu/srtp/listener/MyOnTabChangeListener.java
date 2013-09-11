@@ -46,33 +46,21 @@ public class MyOnTabChangeListener implements OnTabChangeListener {
 			updateClassify();
 		if(tabId.equals(MainActivity.TAB_TAGS[1])){
 //			clean();
-			updateHistory();
+//			updateHistory();
 		}
-		if (flag) {
-			flag = false;
-		}else {
-			int temp = 0;
-			if (tabId.equals(MainActivity.TAB_TAGS[0])) {
-				temp = 0;
-			}else if (tabId.equals(MainActivity.TAB_TAGS[1])) {
-				temp = 1;
-			}else if (tabId.equals(MainActivity.TAB_TAGS[2])) {
-				temp = 2;
-			}else if (tabId.equals(MainActivity.TAB_TAGS[3])) {
-				temp = 3;
-			}
-//			activity.moveNervier(temp);
-			activity.setPosition(temp);
+
+		int temp = 0;
+		if (tabId.equals(MainActivity.TAB_TAGS[0])) {
+			temp = 0;
+		}else if (tabId.equals(MainActivity.TAB_TAGS[1])) {
+			temp = 1;
+		}else if (tabId.equals(MainActivity.TAB_TAGS[2])) {
+			temp = 2;
+		}else if (tabId.equals(MainActivity.TAB_TAGS[3])) {
+			temp = 3;
 		}
-//		if (tabId.equals(MainActivity.TAB_TAGS[0])) {
-//			MySensorManager.arriveViewPager();
-//		}else if (tabId.equals(MainActivity.TAB_TAGS[1])) {
-//			MySensorManager.leaveViewPager();
-//		}else if (tabId.equals(MainActivity.TAB_TAGS[2])) {
-//			MySensorManager.leaveViewPager();
-//		}else if (tabId.equals(MainActivity.TAB_TAGS[3])) {
-//			MySensorManager.leaveViewPager();
-//		}
+		activity.setPosition(temp);
+		activity.moveNervier(temp);
 	}
 	public void updateClassify(){
 		activity.searchLoading.setVisibility(View.VISIBLE);
@@ -83,13 +71,13 @@ public class MyOnTabChangeListener implements OnTabChangeListener {
 				Log.v(TAG, "updateClassify is Running");
 				for (int i = 0; i < 30; i++) {
 					ClassifyItem item=new ClassifyItem();
-					item.setName("ÀàÐÍ"+i);
+					item.setName("ï¿½ï¿½ï¿½ï¿½"+i);
 					item.setPicUrl("http://b.hiphotos.baidu.com/album/w" +
 							"%3D2048/sign=19d7d4fa4034970a4773172fa1f2d0c8/50da81cb39dbb6fde362f9f30824ab18972b372d.jpg");
 					items.add(item);
 				}
 			}
-			
+
 			@Override
 			public void refresh() {
 				activity.searchLoading.setVisibility(View.GONE);
@@ -101,16 +89,16 @@ public class MyOnTabChangeListener implements OnTabChangeListener {
 		};
 		MainService.addTask(t);
 	}
-	
+
 	public void updateHistory(){
-		//clean();
-		Set<BookItem> items=read();
-		List<BookItem> list=new ArrayList<BookItem>(items);
-		HistoryAdapter adapter=new HistoryAdapter(activity, list,historyListView);
-		activity.historyListView.setAdapter(adapter);
-		activity.historyListView.invalidate();
+//		clean();
+//		Set<BookItem> items=read();
+//		List<BookItem> list=new ArrayList<BookItem>(items);
+//		HistoryAdapter adapter=new HistoryAdapter(activity, list,historyListView);
+//		activity.historyListView.setAdapter(adapter);
+//		activity.historyListView.invalidate();
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "unused" })
 	public  Set<BookItem> read(){
 		Set<BookItem> items=null;
@@ -130,10 +118,10 @@ public class MyOnTabChangeListener implements OnTabChangeListener {
 			e.printStackTrace();
 		}
 		try {
-			
+
 			if(in!=null)
 				items=(Set<BookItem>)in.readObject();
-			
+
 		} catch (OptionalDataException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -149,14 +137,14 @@ public class MyOnTabChangeListener implements OnTabChangeListener {
 				}
 			}
 		}
-		
+
 		if(items==null){
 			return new HashSet<BookItem>();
 		}else{
 			return items;
 		}
 	}
-	
+
 	public void clean(){
 		Set<BookItem> items=new HashSet<BookItem>();
 		ObjectOutputStream out=null;

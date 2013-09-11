@@ -65,10 +65,10 @@ public class RecommendAdapter extends BaseAdapter {
 		ViewHolder vh=null;
 		if(v==null){
 			vh=new ViewHolder();
-			v=inflater.inflate(R.layout.recommend_item_list, null);
-			vh.book_name_recommend=(TextView) v.findViewById(R.id.book_name_recommend);
-			vh.book_update_recommend=(TextView) v.findViewById(R.id.book_update_recommend);
-			vh.book_view_recommend=(ImageView) v.findViewById(R.id.book_view_recommend);
+//			v=inflater.inflate(R.layout.recommend_item_list, null);
+//			vh.book_name_recommend=(TextView) v.findViewById(R.id.book_name_recommend);
+//			vh.book_update_recommend=(TextView) v.findViewById(R.id.book_update_recommend);
+//			vh.book_view_recommend=(ImageView) v.findViewById(R.id.book_view_recommend);
 			v.setTag(vh);
 		}else{
 			vh=(ViewHolder) v.getTag();

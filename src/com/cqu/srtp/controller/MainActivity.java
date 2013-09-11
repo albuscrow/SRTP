@@ -1,18 +1,22 @@
 package com.cqu.srtp.controller;
 
 
+import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.cqu.srtp.R;
-import com.cqu.srtp.activity.BooksActivity;
+import com.cqu.srtp.adapter.HistoryAdapter;
 import com.cqu.srtp.adapter.MyPagerAdapter;
+import com.cqu.srtp.adapter.UpdateListAdapter;
 import com.cqu.srtp.common.AppConfig;
 import com.cqu.srtp.common.MainService;
 import com.cqu.srtp.listener.MineOnClickListener;
+import com.cqu.srtp.listener.MyOnPageChangeListener;
 import com.cqu.srtp.listener.MyOnTabChangeListener;
 import com.cqu.srtp.listener.MyTextViewOnClickListener;
 import com.cqu.srtp.util.TitleManeger;
+import com.cqu.strp.view.MyListview;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import android.annotation.SuppressLint;
@@ -29,6 +33,7 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
@@ -42,12 +47,17 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * @author lzq
+ *
+ */
 public class MainActivity extends Activity{
+
 
 	private static String TAG="MainActivity";
 	public static final String[] TAB_TAGS = {"item","topic","search","mytaobao"};
 	private static final int[] TAB_INDICATOR_DRAWABLE_IDS = {R.layout.tag_indicator,R.layout.tag_indicator,R.layout.tag_indicator,R.layout.tag_indicator};
-	private static final int[] TAB_CONTENT_VIEW_IDS = {R.id.item_display_layout,R.id.topic_view,R.id.search_view,R.id.mine};
+	private static final int[] TAB_CONTENT_VIEW_IDS = {R.id.item_display_layout,R.id.history_view,R.id.search_view,R.id.mine};
     
 	private LayoutInflater layoutInflater;
 	private WebView taobaoWebView;
@@ -100,7 +110,7 @@ public class MainActivity extends Activity{
 				welcomeImageView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.welcome_page_fade_out));
 				welcomeImageView.setVisibility(View.GONE);
 			}
-		}, 2000);
+		}, 10);
 		tabHost.setOnTabChangedListener(new MyOnTabChangeListener(this));//在classifyListView初始化之后设置
 	}
 
@@ -113,7 +123,7 @@ public class MainActivity extends Activity{
 			Toast.makeText(this, "网络不给力哦，尝试连接WiFi吧", Toast.LENGTH_SHORT).show();
 		}
 		initTagHost();
-//		initVernier();
+		initVernier();
 		loading=findViewById(R.id.loading);
 		backImageBotton = (ImageButton)findViewById(R.id.back_image_button);
 		backImageBotton.setOnClickListener(new OnClickListener() {
@@ -145,36 +155,35 @@ public class MainActivity extends Activity{
 						backImageBotton.setVisibility(View.GONE);
 						TitleManeger.restoreTitleMine();
 					}
+					
 				}
 			}
 		});
 	}
 
 	
-//	private void initVernier() {
-//		final View view = tabHost.getTabWidget().getChildTabViewAt(0).findViewById(R.id.tab_label);
-//		view.post(new Runnable() {
-//			@Override
-//			public void run() {
-//				float x = view.getX()+(view.getWidth()-vernier.getWidth())/2;
-//				vernier.setX(x);
-//				vernier.setTag(x);
-//			}
-//		});
-//	}
+	private void initVernier() {
+		final View view = tabHost.getTabWidget().getChildTabViewAt(0).findViewById(R.id.tab_label);
+		view.post(new Runnable() {
+			@Override
+			public void run() {
+				float x = view.getX()+(view.getWidth()-vernier.getWidth())/2;
+				vernier.setX(x);
+				vernier.setTag(x);
+			}
+		});
+	}
 
-//	@SuppressLint("NewApi")
-//	public void moveNervier(int index){
-//		final float newX = getNewX(index);
-//		float x = (Float) vernier.getTag();
-//		vernier.setTag(newX);
-//		TranslateAnimation animation = new TranslateAnimation(x, newX, 0,0 );
-//		animation.setDuration(100);
-//		animation.setFillAfter(true);
-//		vernier.startAnimation(animation);
-//	}
+	public void moveNervier(int index){
+		final float newX = getNewX(index);
+		float x = (Float) vernier.getTag();
+		vernier.setTag(newX);
+		TranslateAnimation animation = new TranslateAnimation(x, newX, 0,0 );
+		animation.setDuration(100);
+		animation.setFillAfter(true);
+		vernier.startAnimation(animation);
+	}
 
-	@SuppressLint("NewApi")
 	private float getNewX(int index) {
 		View view = tabHost.getTabWidget().getChildTabViewAt(index).findViewById(R.id.tab_label);
 		return view.getX();
@@ -184,7 +193,7 @@ public class MainActivity extends Activity{
 		tabHost = (TabHost) findViewById(R.id.my_tabhost);
 		tabHost.setup();
 		initItemDisplayViewPager();
-		initTopicDisplayList();
+		initHistoryDisplayList();
 		initSearchView();
 		initTaobaoWebView();
 	}
@@ -226,8 +235,7 @@ public class MainActivity extends Activity{
 		TabSpec tabSpec = tabHost.newTabSpec(TAB_TAGS[3]);
 		ImageView tagIndicator = (ImageView) getTagIndicator(TAB_INDICATOR_DRAWABLE_IDS[3]);
 		tagIndicator.setImageResource(R.drawable.tab_user);
-		tabSpec.setIndicator(tagIndicator)
-		.setContent(TAB_CONTENT_VIEW_IDS[3]);
+		tabSpec.setIndicator(tagIndicator).setContent(TAB_CONTENT_VIEW_IDS[3]);
 		tabHost.addTab(tabSpec);
 		mineView = (LinearLayout) findViewById(R.id.mine_choose);
 		mineRoot = (RelativeLayout) findViewById(R.id.mine);
@@ -241,38 +249,46 @@ public class MainActivity extends Activity{
 		((RelativeLayout)findViewById(R.id.update)).setOnClickListener(mineOnClickListener);
 	}
 
-	private void initTopicDisplayList() {
+	private void initHistoryDisplayList() {
 		TabSpec tabSpec = tabHost.newTabSpec(TAB_TAGS[1]);
 		ImageView tagIndicator = (ImageView) getTagIndicator(TAB_INDICATOR_DRAWABLE_IDS[1]);
 		tagIndicator.setImageResource(R.drawable.tab_topic);
 		tabSpec.setIndicator(tagIndicator).setContent(TAB_CONTENT_VIEW_IDS[1]);
 		tabHost.addTab(tabSpec);
+		
+		
 		historyListView=(ListView) findViewById(R.id.history);
-//		historyListView.setOnItemClickListener(new MyOnItemListener(this));
-//		topicListView = (PullToRefreshListView) findViewById(R.id.topic_list);
-//		topicItemListView = (PullToRefreshListView) findViewById(R.id.topic_item_list);
+		historyListView.setAdapter(new HistoryAdapter(this));
 	}
 
 	private void initItemDisplayViewPager() {
 		TabSpec tabSpec = tabHost.newTabSpec(TAB_TAGS[0]);
 		ImageView tagIndicator = (ImageView) getTagIndicator(TAB_INDICATOR_DRAWABLE_IDS[0]);
 		tagIndicator.setImageResource(R.drawable.tab_home);
-		tabSpec.setIndicator(tagIndicator)
-		.setContent(TAB_CONTENT_VIEW_IDS[0]);
+		tabSpec.setIndicator(tagIndicator).setContent(TAB_CONTENT_VIEW_IDS[0]);
 		tabHost.addTab(tabSpec);
-		pageViews = (ViewPager) findViewById(R.id.item_display_view_page);
 		TextView recommendTV=(TextView) findViewById(R.id.recommend);
 		TextView popularTV=(TextView) findViewById(R.id.popular);
 		TextView latestUpdateTv=(TextView) findViewById(R.id.latestUpdate);
-		View recommend=this.getLayoutInflater().inflate(R.layout.recommend, null);
-		View popular=this.getLayoutInflater().inflate(R.layout.recommend, null);
-		View latestUpdate=this.getLayoutInflater().inflate(R.layout.activity_books, null);
+		
+		MyListview recommendController = new MyListview(this);
+		View recommend=recommendController.getRoot();
+		
+		MyListview popularController = new MyListview(this);
+		View popular=popularController.getRoot();
+		
+		PullToRefreshListView latestUpdate=(PullToRefreshListView) this.getLayoutInflater().inflate(R.layout.update, null);
+		latestUpdate.setAdapter(new UpdateListAdapter(this));
 		List<View> views=new ArrayList<View>();
 		views.add(recommend);
 		views.add(popular);
 		views.add(latestUpdate);
 		MyPagerAdapter pagerAdapter=new MyPagerAdapter(views);
+		
+		
+		pageViews = (ViewPager) findViewById(R.id.item_display_view_page);
 		pageViews.setAdapter(pagerAdapter);
+		pageViews.setOnPageChangeListener(new MyOnPageChangeListener(this));
 		recommendTV.setOnClickListener(new MyTextViewOnClickListener(0, pageViews));
 		popularTV.setOnClickListener(new MyTextViewOnClickListener(1, pageViews));
 		latestUpdateTv.setOnClickListener(new MyTextViewOnClickListener(2, pageViews));

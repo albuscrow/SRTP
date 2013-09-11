@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OptionalDataException;
 import java.io.StreamCorruptedException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,7 +31,7 @@ import android.widget.TextView;
 
 public class HistoryAdapter extends BaseAdapter {
 
-public static final String file="history.cfg";//与MyOnTabChangListener中相同
+public static final String file="history.cfg";//MyOnTabChangListener
 	
 	Activity  activity;
     List<BookItem> items;
@@ -38,14 +39,17 @@ public static final String file="history.cfg";//与MyOnTabChangListener中相同
     ImageLoaderConfiguration imgconfig;
     ImageLoader imgLoader;
     ListView list;
-    public HistoryAdapter(Activity activity,List<BookItem> items,ListView list){
-    	this.items=items;
+    public HistoryAdapter(Activity activity){
+    	this.items=new ArrayList<BookItem>();
+    	
+    	for (int i = 0; i < 10; i++) {
+			this.items.add(new BookItem());
+		}
     	this.activity=activity;
     	inflater=activity.getLayoutInflater();
     	imgconfig=ImageLoaderConfiguration.createDefault(activity);
     	imgLoader=ImageLoader.getInstance();
     	imgLoader.init(imgconfig);
-    	this.list=list;
     }
 	@Override
 	public int getCount() {
@@ -74,71 +78,69 @@ public static final String file="history.cfg";//与MyOnTabChangListener中相同
 	}
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View v=convertView;
-		ViewHolder vh=null;
-		if(v==null){
-			vh=new ViewHolder();
-			v=inflater.inflate(R.layout.history_item_list, null);
-			vh.pic=(ImageView) v.findViewById(R.id.book_view);
-			vh.name=(TextView) v.findViewById(R.id.book_name);
-			vh.author=(TextView) v.findViewById(R.id.book_author);
-			vh.updateInfor=(TextView) v.findViewById(R.id.book_update_infor);
-			vh.level=(RatingBar) v.findViewById(R.id.ratingBar1);
-			vh.deleteButton=(Button) v.findViewById(R.id.deleteButton);
-			v.setTag(vh);
-		}else
-		{
-			vh=(ViewHolder) v.getTag();
-		}
-		final BookItem item=(BookItem) getItem(position);
-		if(item!=null){
-			imgLoader.displayImage(item.getPicUrl(), vh.pic);
-			vh.name.setText(item.getName());
-			vh.author.setText(item.getAuthor());
-			vh.updateInfor.setText(item.getUpdateInfor());
-			vh.level.setMax(10);
-			vh.level.setRating(item.getLeve());
-			vh.level.setStepSize(0.5f);
-			vh.level.setNumStars(5);
-			vh.deleteButton.setTag(item);
-			vh.deleteButton.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					Set<BookItem> bookitems=read(activity);
-					for(BookItem book:bookitems){
-						if(book.equals(item)){
-							bookitems.remove(book);
-							break;
-						}
-					}
-					BookItem deleteItem=null;
-					for(BookItem book:items){
-						if(book.equals(item)){
-							deleteItem=book;
-							break;
-						}
-					}
-					if(deleteItem!=null)
-						items.remove(deleteItem);
-					HistoryAdapter adapter=new HistoryAdapter(activity, items,list);
-					list.setAdapter(adapter);
-					list.invalidate();
-				}
-			});
-		}
-		v.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				showBook(item,v.getContext()); //点击后添加至历史记录
-			}
-		});
-		return v;
+//		View v=convertView;
+//		ViewHolder vh=null;
+//		if(v==null){
+//			vh=new ViewHolder();
+//			v=inflater.inflate(R.layout.history_item, null);
+//			vh.pic=(ImageView) v.findViewById(R.id.book_view);
+//			vh.name=(TextView) v.findViewById(R.id.book_name);
+//			vh.author=(TextView) v.findViewById(R.id.book_author);
+//			vh.updateInfor=(TextView) v.findViewById(R.id.book_update_infor);
+//			vh.level=(RatingBar) v.findViewById(R.id.ratingBar1);
+//			vh.deleteButton=(Button) v.findViewById(R.id.deleteButton);
+//			v.setTag(vh);
+//		}else
+//		{
+//			vh=(ViewHolder) v.getTag();
+//		}
+//		final BookItem item=(BookItem) getItem(position);
+//		if(item!=null){
+//			imgLoader.displayImage(item.getPicUrl(), vh.pic);
+//			vh.name.setText(item.getName());
+//			vh.author.setText(item.getAuthor());
+//			vh.updateInfor.setText(item.getUpdateInfor());
+//			vh.level.setMax(10);
+//			vh.level.setRating(item.getLeve());
+//			vh.level.setStepSize(0.5f);
+//			vh.level.setNumStars(5);
+//			vh.deleteButton.setTag(item);
+//			vh.deleteButton.setOnClickListener(new OnClickListener() {
+//				
+//				@Override
+//				public void onClick(View v) {
+//					Set<BookItem> bookitems=read(activity);
+//					for(BookItem book:bookitems){
+//						if(book.equals(item)){
+//							bookitems.remove(book);
+//							break;
+//						}
+//					}
+//					BookItem deleteItem=null;
+//					for(BookItem book:items){
+//						if(book.equals(item)){
+//							deleteItem=book;
+//							break;
+//						}
+//					}
+//					if(deleteItem!=null)
+//						items.remove(deleteItem);
+//					this.notify();
+//				}
+//			});
+//		}
+//		v.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				showBook(item,v.getContext()); //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷史锟斤拷录
+//			}
+//		});
+		return activity.getLayoutInflater().inflate(R.layout.history_item, null);
 	}
 	
 	public void showBook(BookItem item,Context context){
-		//跳转至相应book详情页面
+		//锟斤拷转锟斤拷锟斤拷应book锟斤拷锟斤拷页锟斤拷
 //		Set<BookItem> items=read(context);
 //		if(!items.contains(item))
 //			items.add(item);
