@@ -2,67 +2,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/list_background"
     android:orientation="horizontal"
-    android:background="@android:color/white"
-    >
+    android:baselineAligned="false" >
+
     <LinearLayout
-        android:layout_width="104dp"
-    	android:layout_height="94dp"
-    	android:orientation="vertical">
-    	<ImageView
-       		android:id="@+id/item_view1"
-        	android:layout_width="104dp"
-        	android:layout_height="74dp"
-        	android:src="@drawable/check_updata" 
-        	android:contentDescription="@null"
-        	android:background="@drawable/image_shape"
-        	/>
-    	<TextView 
-    	    android:id="@+id/item_tiltle1"
-    	    android:layout_width="104dp"
-        	android:layout_height="20dp"
-        	android:gravity="center"
-    	    android:text="@string/item_tiltle1"
-    	    />
+        android:id="@+id/item1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/item_view1"
+            android:layout_width="104dp"
+            android:layout_height="74dp"
+            android:contentDescription="@null"
+            android:src="@drawable/check_updata" />
+
+        <TextView
+            android:id="@+id/item_tiltle1"
+            android:layout_width="104dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="@string/item_tiltle1" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="104dp"
-    	android:layout_height="94dp"
-    	android:orientation="vertical">
-      	<ImageView
-        	android:id="@+id/item_view2"
-        	android:layout_width="104dp"
-        	android:layout_height="74dp"
-        	android:src="@drawable/check_updata" 
-        	android:contentDescription="@null"
-        	android:background="@drawable/image_shape"
-        	/>
-      	<TextView 
-    	    android:id="@+id/item_tiltle2"
-    	    android:layout_width="104dp"
-        	android:layout_height="20dp"
-        	android:gravity="center"
-    	    android:text="@string/item_tiltle2"
-    	    />
-      </LinearLayout>
-      <LinearLayout
-        android:layout_width="104dp"
-    	android:layout_height="94dp"
-    	android:orientation="vertical">
-      	<ImageView
-        	android:id="@+id/item_view3"
-        	android:layout_width="104dp"
-        	android:layout_height="74dp"
-        	android:src="@drawable/check_updata"
-       	 	android:contentDescription="@null"
-        	android:background="@drawable/image_shape"
-        	/>
-      	<TextView 
-    	    android:id="@+id/item_tiltle3"
-    	    android:layout_width="104dp"
-        	android:layout_height="20dp"
-        	android:gravity="center"
-    	    android:text="@string/item_tiltle3"
-    	    />
-      </LinearLayout>
+        android:id="@+id/item2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" >
+
+        <ImageView
+            android:id="@+id/item_view2"
+            android:layout_width="104dp"
+            android:layout_height="74dp"
+            android:contentDescription="@null"
+            android:src="@drawable/check_updata" />
+
+        <TextView
+            android:id="@+id/item_tiltle2"
+            android:layout_width="104dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="@string/item_tiltle2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/item_view3"
+            android:layout_width="104dp"
+            android:layout_height="74dp"
+            android:contentDescription="@null"
+            android:src="@drawable/check_updata" />
+
+        <TextView
+            android:id="@+id/item_tiltle3"
+            android:layout_width="104dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="@string/item_tiltle3" />
+    </LinearLayout>
+
 </LinearLayout>
